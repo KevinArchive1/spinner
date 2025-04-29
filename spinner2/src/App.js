@@ -6,7 +6,7 @@ import FetchUsers from './components/FetchUsers';
 function App() {
   return (
     <div className="flex justify-center items-center h-[100vh] w-[100vw] bg-gray-400 ">
-      <div className='flex flex-col  items-center h-[95%] w-[40%] gap-[2rem]  border border-black rounded-xl bg-orange-200 '>
+      <div className='flex flex-col  items-center h-[95%] w-[40%] gap-[2rem]  border border-black rounded-xl bg-orange-200 scrollbar-hide overflow-y-scroll'>
         <div>
           <h1 className='text-[2rem] font-bold'>User Management</h1>
           <UserForm />

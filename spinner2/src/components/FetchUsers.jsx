@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from '../features/users/usersSlice';
-import { ClipLoader } from 'react-spinners';
 
 const FetchUsers = () => {
   const dispatch = useDispatch();
@@ -14,13 +13,22 @@ const FetchUsers = () => {
   // Show spinner while loading
   if (status === 'loading') {
     return (
-      <div className='flex justify-center items-center bg-white w-[300px] h-[220px]'>
-        <ClipLoader size={80} color="#000000" />
+      <div className='flex flex-col justify-center items-center bg-white w-[300px] h-auto'>
+        <img src="./images/loading.gif" alt="" />
+        <h1>loading..</h1>
       </div>
     );
   }
 
-  if (status === 'failed') return <p className='text-red-900 font-bold'>Failed to load users.</p>;
+  if (status === 'failed') {
+    return (
+      <div className='flex flex-col justify-center items-center bg-white w-[300px] h-auto'>
+        <img src="./images/failed.gif" alt="" />
+        <h1 className='text-red-900 font-bold'>Failed to load users.</h1>
+      </div>
+    );
+  };
+  
 
   return (
     <ul className='flex flex-col  gap-[10px] bg-white w-[300px] h-[250px] p-[1rem] rounded scrollbar-hide overflow-y-scroll'>
