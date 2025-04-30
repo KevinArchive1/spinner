@@ -1,22 +1,30 @@
-// UserList.jsx
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteUser } from '../features/users/usersSlice';
 
 const UserList = () => {
-  const users = useSelector((state) => state.users.data); 
+  const users = useSelector((state) => state.users.data);
   const dispatch = useDispatch();
 
   return (
-    <ul className='flex flex-col gap-[10px] bg-white w-[300px] h-[220px] p-[1rem]  rounded scrollbar-hide overflow-y-scroll'>
+    <ul className="flex flex-col gap-3 bg-white w-full h-[500px] p-4 rounded shadow-md overflow-y-auto scrollbar-hide">
       {users.map((user) => (
-        <li className='flex  items-center' key={user.id}>
-          <button className='bg-red-500 font-bold text-white border border-black p-[6px] hover:bg-white hover:text-black' onClick={() => dispatch(deleteUser(user.id))}>
+        <li
+          key={user.id}
+          className="flex items-center justify-between bg-gray-100 rounded-lg p-3 shadow-sm hover:bg-gray-200 transition duration-200"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
+              {user.name.charAt(0).toUpperCase()}
+            </div>
+            <span className="text-gray-800 font-medium">{user.name}</span>
+          </div>
+          <button
+            onClick={() => dispatch(deleteUser(user.id))}
+            className="bg-red-500 text-white font-semibold px-3 py-1 rounded hover:bg-red-600 transition"
+          >
             Delete
           </button>
-          <div className='flex justify-center w-full'>
-            {user.name}
-          </div>
         </li>
       ))}
     </ul>
